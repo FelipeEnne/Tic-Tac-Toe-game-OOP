@@ -18,7 +18,7 @@ class TicTacToe
         elsif y == 2
           print " X "
         else
-          print "_"
+          print " _ "
         end
       end
       puts " "
@@ -43,6 +43,12 @@ class TicTacToe
         move(player)  ###### arguments
       else
         $table[coorx][coory] = player
+        if player == 1
+          player = 2
+        else
+          player = 1
+        end
+        win
         putTable
       end
     elsif
@@ -52,9 +58,47 @@ class TicTacToe
     move(player) ###### arguments
   end
 
+  def playgame
+    move(1)
+  end
+
+  def win
+    arr = [0,1,2]
+
+    arr.each do |x|
+      if $table[x][0] == $table[x][1] && $table[x][1] == $table[x][2] && $table[x][0] != 0
+        print $table[x][0]
+        print "Win"
+        puts " "
+      end
+    end
+
+    arr.each do |x|
+      if $table[0][x] == $table[1][x] && $table[1][x] == $table[2][x] && $table[x][0] != 0
+        print $table[0][x]
+        print "Win"
+        puts " "
+      end
+    end
+
+    if $table[0][0] == $table[1][1] && $table[1][1] == $table[2][2] && $table[1][1] != 0
+        print $table[0][0]
+        print "Win"
+        puts " "
+    end
+
+    if $table[0][2] == $table[1][1] && $table[1][1] == $table[2][0] && $table[1][1] != 0
+        print $table[0][0]
+        print "Win"
+        puts " "
+    end
+
+
+  end
+
 end
 
 a = TicTacToe.new
 
 
-a.move(1)
+a.playgame
