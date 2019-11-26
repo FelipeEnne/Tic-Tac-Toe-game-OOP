@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-
-#$table = [[1,1,0],[1,2,1],[1,2,1]]
-
+# $table = [[1,1,0],[1,2,1],[1,2,1]]
 
 class TicTacToe
   def initialize
-    $table = [[0,0,0],[0,0,0],[0,0,0]]
+    $table = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
     @movecounter = 0
     putTable
   end
@@ -37,10 +35,10 @@ class TicTacToe
     coorx = coordinates[0]
     coory = coordinates[1]
 
-    if coorx<3 && coorx>=0 && coory<3 && coory>=0
+    if coorx < 3 && coorx >= 0 && coory < 3 && coory >= 0
       if $table[coorx][coory] != 0
         puts "Error: coordinates are occupied"
-        move(player)  ###### arguments
+        move(player) ###### arguments
       else
         $table[coorx][coory] = player
         putTable
@@ -71,7 +69,7 @@ class TicTacToe
   end
 
   def win
-    arr = [0,1,2]
+    arr = [0, 1, 2]
 
     arr.each do |x|
       if $table[x][0] == $table[x][1] && $table[x][1] == $table[x][2] && $table[x][0] != 0
@@ -86,18 +84,17 @@ class TicTacToe
     end
 
     if $table[0][0] == $table[1][1] && $table[1][1] == $table[2][2] && $table[1][1] != 0
-        return true
+      return true
     end
 
     if $table[0][2] == $table[1][1] && $table[1][1] == $table[2][0] && $table[1][1] != 0
-        return true
+      return true
     end
+
     false
   end
-
 end
 
 a = TicTacToe.new
-
 
 a.playgame
